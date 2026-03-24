@@ -15,4 +15,9 @@ class Settings(BaseSettings):
         extra = "ignore"
 
 
-settings = Settings()
+try:
+    settings = Settings()
+except Exception as e:
+    import logging
+    logging.error(f"FATAL: Missing or invalid environment variables: {e}")
+    raise
